@@ -4,6 +4,10 @@ const github = require('@actions/github');
 try {
   // `who-to-greet` input defined in action metadata file
   const nameToGreet = core.getInput('who-to-greet');
+  const issue = core.getInput('issue');
+  const issue_number = core.getInput('issue-number');
+  console.log(`issue: ${issue}`);
+  console.log(`issue_number: ${issue_number}`);
   console.log(`Hello ${nameToGreet}!`);
   const time = (new Date()).toTimeString();
   core.setOutput("time", time);
