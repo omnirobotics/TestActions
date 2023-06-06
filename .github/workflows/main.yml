@@ -17,7 +17,8 @@ jobs:
         id: hello
         with:
           who-to-greet: 'Mona the Octocat'
-          issue: ${{ github.event.issue }}
+          issue-title: ${{ github.event.issue.title }}
+          issue-body: ${{ github.event.issue.body }}
           issue-number: ${{ github.event.issue.number }}
           body: |
             This issue is available for anyone to work on. **Make sure to reference this issue in your pull request.** :sparkles: Thank you for your contribution! :sparkles:
