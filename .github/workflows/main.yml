@@ -1,15 +1,12 @@
-name: Add comment
-on:
-  issues:
-    types:
-      - labeled
+on: [push]
+
 jobs:
-  add-comment:
-    if: github.event.label.name == 'help-wanted'
+  hello_world_job:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
+    name: A job to say hello
     steps:
+      # To use this repository's private action,
+      # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v3
       - name: Hello world action step
@@ -17,11 +14,6 @@ jobs:
         id: hello
         with:
           who-to-greet: 'Mona the Octocat'
-          issue-title: ${{ github.event.issue.title }}
-          issue-body: ${{ github.event.issue.body }}
-          issue-number: ${{ github.event.issue.number }}
-          body: |
-            This issue is available for anyone to work on. **Make sure to reference this issue in your pull request.** :sparkles: Thank you for your contribution! :sparkles:
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
